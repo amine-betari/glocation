@@ -78,3 +78,21 @@ fos_user:
         address: "amine.betari@gmail.com"
         sender_name: "BAS Postman"
 
+
+# Config EasyAdmin
+easy_admin:
+    entities:
+        Vehicule:
+            class: AppBundle\Entity\Vehicule
+            form:
+                fields:
+                    - 'marque'
+                    - 'matricule'
+                    - 'carburant'
+                    - { property: 'equipements', label: 'Equipement', type: 'entity', type_options: { class: 'AppBundle\Entity\Equipement', multiple: true } }
+        User:
+            class: AppBundle\Entity\User
+        Equipement:	
+            class: AppBundle\Entity\Equipement
+        Contrat:
+            class: AppBundle\Entity\Contrat

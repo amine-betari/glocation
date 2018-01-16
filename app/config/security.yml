@@ -1,9 +1,11 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
-    
     encoders:
         AppBundle\Entity\User: bcrypt
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -23,9 +25,12 @@ security:
             anonymous: ~
             # activate different ways to authenticate
             logout: ~
+            form_login:
+                csrf_token_generator: security.csrf.token_manager
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
-
+    access_control:
+        - { path: ^/easyadmin, roles: ROLE_ADMIN }
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~

@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Vehicule
@@ -20,6 +22,12 @@ class Vehicule
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contrat", mappedBy="vehicule", orphanRemoval=true, cascade={"all"} )
+	 *
+	 */
+	private $contrats; 
 
     /**
      * @var string
@@ -41,6 +49,12 @@ class Vehicule
      * @ORM\Column(name="carburant", type="string", length=255)
      */
     private $carburant;
+	
+	/**
+	 *
+	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipement", mappedBy="vehicule", orphanRemoval=true, cascade={"all"} )
+	 */
+	private $equipements;
 
 
     /**
@@ -124,5 +138,84 @@ class Vehicule
     {
         return $this->carburant;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->equipements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add equipement
+     *
+     * @param \AppBundle\Entity\Equipement $equipement
+     *
+     * @return Vehicule
+     */
+    public function addEquipement(\AppBundle\Entity\Equipement $equipement)
+    {
+        $this->equipements[] = $equipement;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipement
+     *
+     * @param \AppBundle\Entity\Equipement $equipement
+     */
+    public function removeEquipement(\AppBundle\Entity\Equipement $equipement)
+    {
+        $this->equipements->removeElement($equipement);
+    }
+
+    /**
+     * Get equipements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipements()
+    {
+        return $this->equipements;
+    }
+	
+	public function __toString()
+	{
+		return $this->getName();
+	}
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Vehicule
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
+    }
+}
