@@ -89,10 +89,9 @@ easy_admin:
                     - 'marque'
                     - 'matricule'
                     - 'carburant'
-                    - { property: 'equipements', label: 'Equipement', type: 'entity', type_options: { class: 'AppBundle\Entity\Equipement', multiple: true } }
         User:
             class: AppBundle\Entity\User
-        Equipement:	
-            class: AppBundle\Entity\Equipement
         Contrat:
             class: AppBundle\Entity\Contrat
+        Locataire:
+            class: AppBundle\Entity\Locataire

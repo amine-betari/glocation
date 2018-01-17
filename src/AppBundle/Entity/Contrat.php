@@ -22,10 +22,10 @@ class Contrat
     private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="contrats")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Locataire", inversedBy="contrats")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
-	private $user;
+	private $locataire;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vehicule", inversedBy="contrats")
@@ -269,13 +269,13 @@ class Contrat
     /**
      * Set user
      *
-     * @param \AppBundle\Entity\User $user
+     * @param \AppBundle\Entity\Locataire $locataire
      *
      * @return Contrat
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setLocataire(\AppBundle\Entity\Locataire $locataire)
     {
-        $this->user = $user;
+        $this->locataire = $locataire;
 
         return $this;
     }
@@ -283,11 +283,11 @@ class Contrat
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\User
+     * @return \AppBundle\Entity\Locataire
      */
-    public function getUser()
+    public function getLocataire()
     {
-        return $this->user;
+        return $this->locataire;
     }
 
     /**
@@ -313,4 +313,5 @@ class Contrat
     {
         return $this->vehicule;
     }
+
 }

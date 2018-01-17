@@ -24,12 +24,6 @@ class User extends BaseUser
      */
     protected $id;
 	
-	/**
-	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contrat", mappedBy="user", orphanRemoval=true, cascade={"all"} )
-	 *
-	 */
-	private $contrats; 
-
     /**
      * @var string
      *
@@ -101,39 +95,5 @@ class User extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Add contrat
-     *
-     * @param \AppBundle\Entity\Contrat $contrat
-     *
-     * @return User
-     */
-    public function addContrat(\AppBundle\Entity\Contrat $contrat)
-    {
-        $this->contrats[] = $contrat;
-
-        return $this;
-    }
-
-    /**
-     * Remove contrat
-     *
-     * @param \AppBundle\Entity\Contrat $contrat
-     */
-    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
-    {
-        $this->contrats->removeElement($contrat);
-    }
-
-    /**
-     * Get contrats
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getContrats()
-    {
-        return $this->contrats;
     }
 }
