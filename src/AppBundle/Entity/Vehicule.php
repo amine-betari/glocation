@@ -30,6 +30,12 @@ class Vehicule
 	private $contrats; 
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Equipement", cascade={"persist"})
+     * @ORM\JoinTable(name="vehicule_equipement")
+     */	 
+     private $equipements;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="marque", type="string", length=255)
@@ -176,7 +182,65 @@ class Vehicule
 	
 	public function __toString()
 	{
-		return $this->getMarque();
+		return $this->getMarque().$this->getMatricule();
 	}
 	
+
+    /**
+     * Set equipement
+     *
+     * @param \AppBundle\Entity\Equipement $equipement
+     *
+     * @return Vehicule
+     */
+    public function setEquipement(\AppBundle\Entity\Equipement $equipement)
+    {
+        $this->equipement = $equipement;
+
+        return $this;
+    }
+
+    /**
+     * Get equipement
+     *
+     * @return \AppBundle\Entity\Equipement
+     */
+    public function getEquipement()
+    {
+        return $this->equipement;
+    }
+
+    /**
+     * Add equipement
+     *
+     * @param \AppBundle\Entity\Equipement $equipement
+     *
+     * @return Vehicule
+     */
+    public function addEquipement(\AppBundle\Entity\Equipement $equipement)
+    {
+        $this->equipements[] = $equipement;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipement
+     *
+     * @param \AppBundle\Entity\Equipement $equipement
+     */
+    public function removeEquipement(\AppBundle\Entity\Equipement $equipement)
+    {
+        $this->equipements->removeElement($equipement);
+    }
+
+    /**
+     * Get equipements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipements()
+    {
+        return $this->equipements;
+    }
 }

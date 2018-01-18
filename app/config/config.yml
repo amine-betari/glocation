@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -81,17 +81,17 @@ fos_user:
 
 # Config EasyAdmin
 easy_admin:
+#    site_admin: '<img src="../../web/public/img/logo.png" />'
+    design:
+        brand_color: '#A46A1F'
     entities:
         Vehicule:
             class: AppBundle\Entity\Vehicule
-            form:
-                fields:
-                    - 'marque'
-                    - 'matricule'
-                    - 'carburant'
         User:
             class: AppBundle\Entity\User
         Contrat:
             class: AppBundle\Entity\Contrat
         Locataire:
             class: AppBundle\Entity\Locataire
+        Equipement:
+            class: AppBundle\Entity\Equipement
