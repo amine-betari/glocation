@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: admin.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -68,7 +69,11 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-
+# Stof configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true	
 # FOS\UserBundle configuration
 fos_user:
     db_driver: orm
@@ -80,18 +85,3 @@ fos_user:
 
 
 # Config EasyAdmin
-easy_admin:
-#    site_admin: '<img src="../../web/public/img/logo.png" />'
-    design:
-        brand_color: '#A46A1F'
-    entities:
-        Vehicule:
-            class: AppBundle\Entity\Vehicule
-        User:
-            class: AppBundle\Entity\User
-        Contrat:
-            class: AppBundle\Entity\Contrat
-        Locataire:
-            class: AppBundle\Entity\Locataire
-        Equipement:
-            class: AppBundle\Entity\Equipement

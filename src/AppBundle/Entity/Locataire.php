@@ -22,6 +22,13 @@ class Locataire
     private $id;
 	
 	/**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+	
+	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contrat", mappedBy="locataire", orphanRemoval=true, cascade={"all"} )
 	 *
 	 */
@@ -51,35 +58,35 @@ class Locataire
     /**
      * @var string
      *
-     * @ORM\Column(name="RaisonSociale", type="string", length=255)
+     * @ORM\Column(name="RaisonSociale", type="string", length=255, nullable=true)
      */
     private $raisonSociale;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Delivrance", type="string", length=255)
+     * @ORM\Column(name="Delivrance", type="string", length=255, nullable=true)
      */
     private $delivrance;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nationalite", type="string", length=255)
+     * @ORM\Column(name="Nationalite", type="string", length=255, nullable=true)
      */
     private $nationalite;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="AdresseMaroc", type="text")
+     * @ORM\Column(name="AdresseMaroc", type="text", nullable=true)
      */
     private $adresseMaroc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="AdresseEtranger", type="text")
+     * @ORM\Column(name="AdresseEtranger", type="text", nullable=true)
      */
     private $adresseEtranger;
 
@@ -93,14 +100,14 @@ class Locataire
     /**
      * @var string
      *
-     * @ORM\Column(name="NumPasseport", type="string", length=255)
+     * @ORM\Column(name="NumPasseport", type="string", length=255, nullable=true)
      */
     private $numPasseport;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Profession", type="string", length=255)
+     * @ORM\Column(name="Profession", type="string", length=255, nullable=true)
      */
     private $profession;
 
@@ -415,6 +422,7 @@ class Locataire
     public function __construct()
     {
         $this->contrats = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->dateCreated = new \Datetime();
     }
 
     /**
@@ -455,4 +463,28 @@ class Locataire
 	{
 		return $this->getNom();
 	}
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     *
+     * @return Locataire
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
 }

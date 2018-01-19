@@ -15,10 +15,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-	    new FOS\UserBundle\FOSUserBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-	    new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+			new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+			new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,0 +1,67 @@
+easy_admin:
+#    site_admin: '<img src="../../web/public/img/logo.png" />'
+    design:
+        brand_color: '#A46A1F'
+    entities:
+        Vehicule:
+            class: AppBundle\Entity\Vehicule
+            form:
+                fields:
+                    - {property: 'marque'}
+                    - {property: 'matricule'}
+                    - {property: 'carburant'}
+                    - {property: 'clim'}
+                    - {property: 'equipements'}
+        User:
+            class: AppBundle\Entity\User
+        Contrat:
+            class: AppBundle\Entity\Contrat
+#            controller: AppBundle\Controller\AdminController
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Locataire' }
+                    - {property: 'locataire', type_options: { placeholder: ' ' }} 
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Vehicule' }
+                    - {property: 'vehicule', type_options: { placeholder: ' ' }} 
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Deuxième Chauffeur' }
+                    - {property: 'nomSecond', label: 'Nom', type_options: { required: false }} 
+                    - {property: 'prenomSecond', label: 'Prénom', type_options: { required: false }} 
+                    - {property: 'cinSecond', label: 'CIN', type_options: { required: false }}  
+                    - {property: 'permisSecond', label: 'Permis de conduire', type_options: { required: false }}   
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Départ/Retour' }
+                    - {property: 'departKm', label: 'KM Départ', type_options: { required: false }}   
+                    - {property: 'retourKm', label: 'KM Retour', type_options: { required: false }}   
+                    - {property: 'dateDepart', label: 'Date Départ', type_options: { required: false, placeholder: '' }}   
+                    - {property: 'dateRetour', label: 'Date Retour', type_options: { required: false }}   
+                    - {property: 'dateRetourPrevu', label: 'Date Retour Prévu', type_options: { required: false }}   
+                    - {property: 'assuranceAvFranchise', label: 'Assurance Avec Franchise', type_options: { required: false }}   
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Facture' }
+                    - {property: 'Nombre', label: 'Nombre', type_options: { required: false }}   
+                    - {property: 'jours', label: 'Jours', type_options: { required: false }}   
+                    - {property: 'mois', label: 'Mois', type_options: { required: false }}   
+                    - {property: 'heureSupp', label: 'Heures Supp', type_options: { required: false }}   
+                    - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: false }}   
+                    - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: false }}  
+                    - { type: 'group', css_class: 'col-sm-6', help: 'Total à payer en DH' }
+                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: false }}  					
+        Locataire:
+            class: AppBundle\Entity\Locataire
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-6', label: '' }
+                    - {property: 'nom'}
+                    - {property: 'prenom'}
+                    - {property: 'cIN', label: 'CIN'}
+                    - {property: 'delivrance', label: 'Délivré le', type_options: { required: false }}
+                    - {property: 'raisonSociale', type_options: { required: false }}
+                    - {property: 'phone', label: 'Tél'}
+                    - { type: 'group', css_class: 'col-sm-6', label: '' }
+                    - {property: 'nationalite', label: 'Nationalité', type_options: { required: false }}
+                    - {property: 'numPasseport', label: 'Passeport'}
+                    - {property: 'profession', label: 'Profession', type_options: { required: false }}
+                    - {property: 'permis', label: 'Permis de consuite'}
+                    - { type: 'group', css_class: 'col-sm-6', label: '' }
+                    - {property: 'adresseMaroc', label: 'Adresse au Maroc', type_options: { required: false }}
+                    - {property: 'adresseEtranger', label: 'Adresse à étranger', type_options: { required: false }}
+        Equipement:
+            class: AppBundle\Entity\Equipement

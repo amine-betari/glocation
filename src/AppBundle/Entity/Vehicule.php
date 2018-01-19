@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -55,6 +56,21 @@ class Vehicule
      * @ORM\Column(name="carburant", type="string", length=255)
      */
     private $carburant;
+	
+	/**
+     * @var bool
+     *
+     * @ORM\Column(name="clim", type="boolean", nullable=true)
+     */
+    private $clim;
+	
+	/**
+	 * @Gedmo\Slug(fields={"marque"})
+	 * @ORM\Column(name="slug", type="string", length=255)
+	 */
+	private $slug; 
+	
+
 
 
     /**
@@ -242,5 +258,53 @@ class Vehicule
     public function getEquipements()
     {
         return $this->equipements;
+    }
+
+    /**
+     * Set clim
+     *
+     * @param boolean $clim
+     *
+     * @return Vehicule
+     */
+    public function setClim($clim)
+    {
+        $this->clim = $clim;
+
+        return $this;
+    }
+
+    /**
+     * Get clim
+     *
+     * @return boolean
+     */
+    public function getClim()
+    {
+        return $this->clim;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Vehicule
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
