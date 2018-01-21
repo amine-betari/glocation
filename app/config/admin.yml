@@ -1,7 +1,11 @@
 easy_admin:
-#    site_admin: '<img src="../../web/public/img/logo.png" />'
     design:
         brand_color: '#A46A1F'
+        menu: ['Vehicule', 'Equipement', 'Locataire']
+        form_theme: 'vertical'
+        assets:
+            css:
+                - 'bundles/app/css/admin.css'
     entities:
         Vehicule:
             class: AppBundle\Entity\Vehicule
@@ -10,8 +14,17 @@ easy_admin:
                     - {property: 'marque'}
                     - {property: 'matricule'}
                     - {property: 'carburant'}
-                    - {property: 'clim'}
+                    - {property: 'clim',  label: 'CLIM'}
                     - {property: 'equipements'}
+                    - {property: 'couleur'}
+            list:
+                title: "Liste des véhicules"
+                fields:
+                    - {property: 'marque', label: 'MARQUE VOITURE'}
+                    - {property: 'matricule', label: 'IMMATRICULE'}
+                    - {property: 'carburant', label: 'CARBURANT'}
+                    - {property: 'clim', label: 'CLIM'}
+                    - {property: 'couleur', label: 'COULEUR'}
         User:
             class: AppBundle\Entity\User
         Contrat:
@@ -61,7 +74,18 @@ easy_admin:
                     - {property: 'profession', label: 'Profession', type_options: { required: false }}
                     - {property: 'permis', label: 'Permis de consuite'}
                     - { type: 'group', css_class: 'col-sm-6', label: '' }
-                    - {property: 'adresseMaroc', label: 'Adresse au Maroc', type_options: { required: false }}
+                    - {property: 'adresseMaroc', label: 'Adresse au Maroc', type_options: { required: false}}
                     - {property: 'adresseEtranger', label: 'Adresse à étranger', type_options: { required: false }}
+            list:
+                title: "Liste des locataires"
+                fields:
+                    - {property: 'cIN', label: 'CIN'}
+                    - {property: 'nom', label: 'Nom'}
+                    - {property: 'prenom', label: 'Prenom'}
+                    - {property: 'raisonSociale', label: 'Raison Sociale'}
+                    - {property: 'permis', label: 'Permis de conduire'}
+                    - {property: 'profession', label: 'Profession'}
         Equipement:
             class: AppBundle\Entity\Equipement
+        Couleur:
+            class: AppBundle\Entity\Couleur

@@ -25,6 +25,20 @@ class Vehicule
     private $id;
 	
 	/**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+	
+	
+	/**
+      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Couleur", inversedBy="vehicules")
+      * @ORM\JoinColumn(nullable=true)
+     */	 
+     private $couleur;
+	
+	/**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contrat", mappedBy="vehicule", orphanRemoval=true, cascade={"all"} )
 	 *
 	 */
@@ -159,7 +173,7 @@ class Vehicule
      */
     public function __construct()
     {
-	
+		$this->dateCreated = new \Datetime();
     }
 
     /**
@@ -198,7 +212,7 @@ class Vehicule
 	
 	public function __toString()
 	{
-		return $this->getMarque().$this->getMatricule();
+		return $this->getMarque().' '.$this->getMatricule();
 	}
 	
 
@@ -306,5 +320,53 @@ class Vehicule
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param \AppBundle\Entity\Couleur $couleur
+     *
+     * @return Vehicule
+     */
+    public function setCouleur(\AppBundle\Entity\Couleur $couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return \AppBundle\Entity\Couleur
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     *
+     * @return Vehicule
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }

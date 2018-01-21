@@ -40,6 +40,11 @@ class Contrat
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $vehicule; 
+	
+	/**
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Facture", cascade={"persist", "remove"})
+	 */
+	private $facture;
 
     /**
      * @var string
@@ -871,5 +876,29 @@ class Contrat
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Set facture
+     *
+     * @param \AppBundle\Entity\Facture $facture
+     *
+     * @return Contrat
+     */
+    public function setFacture(\AppBundle\Entity\Facture $facture = null)
+    {
+        $this->facture = $facture;
+
+        return $this;
+    }
+
+    /**
+     * Get facture
+     *
+     * @return \AppBundle\Entity\Facture
+     */
+    public function getFacture()
+    {
+        return $this->facture;
     }
 }

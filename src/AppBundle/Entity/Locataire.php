@@ -63,9 +63,9 @@ class Locataire
     private $raisonSociale;
 
     /**
-     * @var string
+     * @var \Date
      *
-     * @ORM\Column(name="Delivrance", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Delivrance", type="date")
      */
     private $delivrance;
 
@@ -228,7 +228,7 @@ class Locataire
     /**
      * Set delivrance
      *
-     * @param string $delivrance
+     * @param \Date $delivrance
      *
      * @return Locataire
      */
@@ -242,7 +242,7 @@ class Locataire
     /**
      * Get delivrance
      *
-     * @return string
+     * @return \Date
      */
     public function getDelivrance()
     {
