@@ -22,6 +22,13 @@ class Facture
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="numFacture", type="string", length=255, nullable=false)
+     */
+    private $numFacture;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCreated", type="date")
@@ -31,28 +38,28 @@ class Facture
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=true)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="jours", type="string", length=255)
+     * @ORM\Column(name="jours", type="string", length=255, nullable=true)
      */
     private $jours;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mois", type="string", length=255)
+     * @ORM\Column(name="mois", type="string", length=255, nullable=true)
      */
     private $mois;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="heureSupp", type="string", length=255)
+     * @ORM\Column(name="heureSupp", type="string", length=255, nullable=true)
      */
     private $heureSupp;
 
@@ -73,14 +80,14 @@ class Facture
     /**
      * @var string
      *
-     * @ORM\Column(name="fraisRemise", type="string", length=255)
+     * @ORM\Column(name="fraisRemise", type="string", length=255, nullable=true)
      */
     private $fraisRemise;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="diverses", type="string", length=255)
+     * @ORM\Column(name="diverses", type="string", length=255, nullable=true)
      */
     private $diverses;
 
@@ -91,6 +98,11 @@ class Facture
      */
     private $totalTccApayer;
 
+	
+	public function __construct()
+	{
+		$this->dateCreated = new \Datetime();
+	}
 
     /**
      * Get id
@@ -340,5 +352,29 @@ class Facture
     public function getTotalTccApayer()
     {
         return $this->totalTccApayer;
+    }
+
+    /**
+     * Set numFacture
+     *
+     * @param string $numFacture
+     *
+     * @return Facture
+     */
+    public function setNumFacture($numFacture)
+    {
+        $this->numFacture = $numFacture;
+
+        return $this;
+    }
+
+    /**
+     * Get numFacture
+     *
+     * @return string
+     */
+    public function getNumFacture()
+    {
+        return $this->numFacture;
     }
 }

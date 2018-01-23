@@ -61,23 +61,23 @@ class Contrat
     private $retourKm;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateRetourPrevu", type="date")
+     * @ORM\Column(name="dateRetourPrevu", type="datetime")
      */
     private $dateRetourPrevu;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateDepart", type="date")
+     * @ORM\Column(name="dateDepart", type="datetime")
      */
     private $dateDepart;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateRetour", type="date")
+     * @ORM\Column(name="dateRetour", type="datetime")
      */
     private $dateRetour;
 
@@ -275,7 +275,7 @@ class Contrat
     /**
      * Set dateRetourPrevu
      *
-     * @param \Date $dateRetourPrevu
+     * @param \DateTime $dateRetourPrevu
      *
      * @return Contrat
      */
@@ -289,7 +289,7 @@ class Contrat
     /**
      * Get dateRetourPrevu
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateRetourPrevu()
     {
@@ -299,7 +299,7 @@ class Contrat
     /**
      * Set dateDepart
      *
-     * @param \Date $dateDepart
+     * @param \DateTime $dateDepart
      *
      * @return Contrat
      */
@@ -313,7 +313,7 @@ class Contrat
     /**
      * Get dateDepart
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateDepart()
     {
@@ -323,7 +323,7 @@ class Contrat
     /**
      * Set dateRetour
      *
-     * @param \Date $dateRetour
+     * @param \DateTime $dateRetour
      *
      * @return Contrat
      */
@@ -337,7 +337,7 @@ class Contrat
     /**
      * Get dateRetour
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateRetour()
     {

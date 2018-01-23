@@ -1,7 +1,8 @@
 easy_admin:
+    site_name: 'EL BEZZAZI LOCATION'
     design:
         brand_color: '#A46A1F'
-        menu: ['Vehicule', 'Equipement', 'Locataire']
+        menu: ['Vehicule', 'Equipement', 'Locataire', 'Contrat']
         form_theme: 'vertical'
         assets:
             css:
@@ -29,7 +30,6 @@ easy_admin:
             class: AppBundle\Entity\User
         Contrat:
             class: AppBundle\Entity\Contrat
-#            controller: AppBundle\Controller\AdminController
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-6', label: 'Locataire' }
@@ -40,12 +40,12 @@ easy_admin:
                     - {property: 'nomSecond', label: 'Nom', type_options: { required: false }} 
                     - {property: 'prenomSecond', label: 'Prénom', type_options: { required: false }} 
                     - {property: 'cinSecond', label: 'CIN', type_options: { required: false }}  
-                    - {property: 'permisSecond', label: 'Permis de conduire', type_options: { required: false }}   
-                    - { type: 'group', css_class: 'col-sm-6', label: 'Départ/Retour' }
-                    - {property: 'departKm', label: 'KM Départ', type_options: { required: false }}   
-                    - {property: 'retourKm', label: 'KM Retour', type_options: { required: false }}   
-                    - {property: 'dateDepart', label: 'Date Départ', type_options: { required: false, placeholder: '' }}   
-                    - {property: 'dateRetour', label: 'Date Retour', type_options: { required: false }}   
+                    - {property: 'permisSecond', label: 'Permis Numero', type_options: { required: false }}   
+                    - { type: 'group', css_class: 'col-sm-6', label: 'La Location' }
+                    - {property: 'departKm', label: 'Kilometrage  Depart', type_options: { required: false }}   
+                    - {property: 'retourKm', label: 'Kilometrage  Retour', type_options: { required: false }}   
+                    - {property: 'dateDepart', label: 'Date et heure debut de location', type_options: { required: false, placeholder: '' }}   
+                    - {property: 'dateRetour', label: 'Date et heure de fin de location', type_options: { required: false }}   
                     - {property: 'dateRetourPrevu', label: 'Date Retour Prévu', type_options: { required: false }}   
                     - {property: 'assuranceAvFranchise', label: 'Assurance Avec Franchise', type_options: { required: false }}   
                     - { type: 'group', css_class: 'col-sm-6', label: 'Facture' }
@@ -53,7 +53,7 @@ easy_admin:
                     - {property: 'jours', label: 'Jours', type_options: { required: false }}   
                     - {property: 'mois', label: 'Mois', type_options: { required: false }}   
                     - {property: 'heureSupp', label: 'Heures Supp', type_options: { required: false }}   
-                    - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: false }}   
+                    - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: true }}   
                     - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: false }}  
                     - { type: 'group', css_class: 'col-sm-6', help: 'Total à payer en DH' }
                     - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: false }}  					
@@ -65,14 +65,16 @@ easy_admin:
                     - {property: 'nom'}
                     - {property: 'prenom'}
                     - {property: 'cIN', label: 'CIN'}
-                    - {property: 'delivrance', label: 'Délivré le', type_options: { required: false }}
+#                    - {property: 'delivrance', label: 'Délivré le', type_options: { required: false }}
                     - {property: 'raisonSociale', type_options: { required: false }}
                     - {property: 'phone', label: 'Tél'}
                     - { type: 'group', css_class: 'col-sm-6', label: '' }
                     - {property: 'nationalite', label: 'Nationalité', type_options: { required: false }}
                     - {property: 'numPasseport', label: 'Passeport'}
                     - {property: 'profession', label: 'Profession', type_options: { required: false }}
-                    - {property: 'permis', label: 'Permis de consuite'}
+                    - {property: 'permis', label: 'Permis Numero'}
+                    - {property: 'delivrance', label: 'Delivre le', type_options: { required: false }}
+                    - {property: 'delivranceVille', label: 'A', type_options:{ required: false }}
                     - { type: 'group', css_class: 'col-sm-6', label: '' }
                     - {property: 'adresseMaroc', label: 'Adresse au Maroc', type_options: { required: false}}
                     - {property: 'adresseEtranger', label: 'Adresse à étranger', type_options: { required: false }}
@@ -89,3 +91,5 @@ easy_admin:
             class: AppBundle\Entity\Equipement
         Couleur:
             class: AppBundle\Entity\Couleur
+        Facture: 
+            class: AppBundle\Entity\Facture

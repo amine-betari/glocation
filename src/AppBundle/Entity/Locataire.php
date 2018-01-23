@@ -72,6 +72,13 @@ class Locataire
     /**
      * @var string
      *
+     * @ORM\Column(name="DelivranceVille", type="string", length=255)
+     */
+    private $delivranceVille;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Nationalite", type="string", length=255, nullable=true)
      */
     private $nationalite;
@@ -461,7 +468,7 @@ class Locataire
 	
 	public function __toString()
 	{
-		return $this->getNom();
+		return $this->getNom().' '.$this->getCIN().' '.$this->getRaisonSociale();
 	}
 
     /**
@@ -486,5 +493,29 @@ class Locataire
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Set delivranceVille
+     *
+     * @param string $delivranceVille
+     *
+     * @return Locataire
+     */
+    public function setDelivranceVille($delivranceVille)
+    {
+        $this->delivranceVille = $delivranceVille;
+
+        return $this;
+    }
+
+    /**
+     * Get delivranceVille
+     *
+     * @return string
+     */
+    public function getDelivranceVille()
+    {
+        return $this->delivranceVille;
     }
 }
