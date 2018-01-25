@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Facture
  *
  * @ORM\Table(name="facture")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FactureRepository")
+ * @UniqueEntity(fields="numContrat", message="Une facture existe déjà avec ce numero.")
  */
 class Facture
 {

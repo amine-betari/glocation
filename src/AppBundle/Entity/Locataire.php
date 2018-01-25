@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Locataire
  *
  * @ORM\Table(name="locataire")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LocataireRepository")
+ * @UniqueEntity(fields="cIN", message="Un client existe déjà avec ce CIN.")
  */
 class Locataire
 {
@@ -38,6 +42,7 @@ class Locataire
      * @var string
      *
      * @ORM\Column(name="Nom", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nom;
 
@@ -45,6 +50,7 @@ class Locataire
      * @var string
      *
      * @ORM\Column(name="Prenom", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $prenom;
 
@@ -52,6 +58,7 @@ class Locataire
      * @var string
      *
      * @ORM\Column(name="CIN", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $cIN;
 
@@ -101,6 +108,7 @@ class Locataire
      * @var string
      *
      * @ORM\Column(name="Phone", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $phone;
 
@@ -122,6 +130,7 @@ class Locataire
      * @var string
      *
      * @ORM\Column(name="Permis", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $permis;
 

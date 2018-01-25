@@ -3,13 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Contrat
  *
  * @ORM\Table(name="contrat")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContratRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields="numContrat", message="Un contrat existe déjà avec ce numero.")
  */
 class Contrat
 {
@@ -32,12 +35,14 @@ class Contrat
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Locataire", inversedBy="contrats")
 	 * @ORM\JoinColumn(nullable=false)
+	 * @Assert\NotBlank()
 	 */
 	private $locataire;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vehicule", inversedBy="contrats")
 	 * @ORM\JoinColumn(nullable=false)
+	 * @Assert\NotBlank()
 	 */
 	private $vehicule; 
 	
@@ -61,23 +66,25 @@ class Contrat
     private $retourKm;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="dateRetourPrevu", type="datetime")
+     * @ORM\Column(name="dateRetourPrevu", type="date")
+	 * @Assert\NotBlank()
      */
     private $dateRetourPrevu;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="dateDepart", type="datetime")
+     * @ORM\Column(name="dateDepart", type="date")
+	 * @Assert\NotBlank()
      */
     private $dateDepart;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="dateRetour", type="datetime")
+     * @ORM\Column(name="dateRetour", type="date", nullable=false)
      */
     private $dateRetour;
 
@@ -155,14 +162,16 @@ class Contrat
 	/**
      * @var string
      *
-     * @ORM\Column(name="prixUnit", type="string", length=255, nullable=true)
+     * @ORM\Column(name="prixUnit", type="string", length=255, nullable=false)
+	 * @Assert\NotBlank()
      */
     private $prixUnit;
 	
 	/**
      * @var string
      *
-     * @ORM\Column(name="totalTcc", type="string", length=255, nullable=true)
+     * @ORM\Column(name="totalTcc", type="string", length=255, nullable=false)
+	 * @Assert\NotBlank()
      */
     private $totalTcc;
 	
@@ -183,9 +192,9 @@ class Contrat
 	/**
      * @var string
      *
-     * @ORM\Column(name="carburant", type="string", length=255, nullable=true)
+     * @ORM\Column(name="avance", type="string", length=255, nullable=true)
      */
-    private $carburant;
+    private $avance;
 	
 	/**
      * @var string
@@ -205,6 +214,7 @@ class Contrat
      * @var string
      *
      * @ORM\Column(name="totalTccApayer", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $totalTccApayer;
 	
@@ -275,7 +285,7 @@ class Contrat
     /**
      * Set dateRetourPrevu
      *
-     * @param \DateTime $dateRetourPrevu
+     * @param \Date $dateRetourPrevu
      *
      * @return Contrat
      */
@@ -289,7 +299,7 @@ class Contrat
     /**
      * Get dateRetourPrevu
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateRetourPrevu()
     {
@@ -299,7 +309,7 @@ class Contrat
     /**
      * Set dateDepart
      *
-     * @param \DateTime $dateDepart
+     * @param \Date $dateDepart
      *
      * @return Contrat
      */
@@ -313,7 +323,7 @@ class Contrat
     /**
      * Get dateDepart
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateDepart()
     {
@@ -323,7 +333,7 @@ class Contrat
     /**
      * Set dateRetour
      *
-     * @param \DateTime $dateRetour
+     * @param \Date $dateRetour
      *
      * @return Contrat
      */
@@ -337,7 +347,7 @@ class Contrat
     /**
      * Get dateRetour
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateRetour()
     {
@@ -394,7 +404,7 @@ class Contrat
 	
 	public function __toString()
 	{
-		return $this->getName();
+		return $this->getnumContrat();
 	}
 
     /**
@@ -900,5 +910,43 @@ class Contrat
     public function getFacture()
     {
         return $this->facture;
+    }
+
+    /**
+     * Set avance
+     *
+     * @param string $avance
+     *
+     * @return Contrat
+     */
+    public function setAvance($avance)
+    {
+        $this->avance = $avance;
+
+        return $this;
+    }
+
+    /**
+     * Get avance
+     *
+     * @return string
+     */
+    public function getAvance()
+    {
+        return $this->avance;
+    }
+	
+	/**
+     * @Assert\Callback
+     */
+    public function isDatesValid(ExecutionContextInterface $context, $payload)
+    {
+        // comparer les dates 
+		if ($this->getDateDepart() >= $this->getDateRetour() || $this->getDateDepart() >= $this->getDateRetourPrevu()) {
+			$context
+					->buildViolation('La date de départ doit être inférieure aux dates de retour')
+					->atPath('dateDepart')
+					->addViolation();
+		}
     }
 }

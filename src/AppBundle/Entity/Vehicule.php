@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -12,6 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="vehicule")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculeRepository")
+ * @UniqueEntity(fields="matricule", message="Un vehicule existe déjà avec ce matricule.")
  */
 class Vehicule
 {
@@ -54,6 +57,7 @@ class Vehicule
      * @var string
      *
      * @ORM\Column(name="marque", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $marque;
 
@@ -61,6 +65,7 @@ class Vehicule
      * @var string
      *
      * @ORM\Column(name="matricule", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $matricule;
 
@@ -68,6 +73,7 @@ class Vehicule
      * @var string
      *
      * @ORM\Column(name="carburant", type="string", length=255)
+	 * @Assert\NotBlank()
      */
     private $carburant;
 	
@@ -79,14 +85,11 @@ class Vehicule
     private $clim;
 	
 	/**
-	 * @Gedmo\Slug(fields={"marque"})
+	 * @Gedmo\Slug(fields={"matricule"})
 	 * @ORM\Column(name="slug", type="string", length=255)
 	 */
 	private $slug; 
 	
-
-
-
     /**
      * Get id
      *

@@ -11,6 +11,7 @@ easy_admin:
         Vehicule:
             class: AppBundle\Entity\Vehicule
             form:
+                title: "Ajouter une voiture"
                 fields:
                     - {property: 'marque'}
                     - {property: 'matricule'}
@@ -25,17 +26,18 @@ easy_admin:
                     - {property: 'matricule', label: 'IMMATRICULE'}
                     - {property: 'carburant', label: 'CARBURANT'}
                     - {property: 'clim', label: 'CLIM'}
-                    - {property: 'couleur', label: 'COULEUR'}
+                    - {property: 'couleur.titre', label: 'COULEUR'}
         User:
             class: AppBundle\Entity\User
         Contrat:
             class: AppBundle\Entity\Contrat
             form:
+                title: "Créer un contrat"
                 fields:
                     - { type: 'group', css_class: 'col-sm-6', label: 'Locataire' }
-                    - {property: 'locataire', type_options: { placeholder: ' ' }} 
+                    - {property: 'locataire', type_options: { placeholder: ' ', required: true }} 
                     - { type: 'group', css_class: 'col-sm-6', label: 'Vehicule' }
-                    - {property: 'vehicule', type_options: { placeholder: ' ' }} 
+                    - {property: 'vehicule', type_options: { placeholder: ' ', required: true }} 
                     - { type: 'group', css_class: 'col-sm-6', label: 'Deuxième Chauffeur' }
                     - {property: 'nomSecond', label: 'Nom', type_options: { required: false }} 
                     - {property: 'prenomSecond', label: 'Prénom', type_options: { required: false }} 
@@ -44,36 +46,48 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-6', label: 'La Location' }
                     - {property: 'departKm', label: 'Kilometrage  Depart', type_options: { required: false }}   
                     - {property: 'retourKm', label: 'Kilometrage  Retour', type_options: { required: false }}   
-                    - {property: 'dateDepart', label: 'Date et heure debut de location', type_options: { required: false, placeholder: '' }}   
-                    - {property: 'dateRetour', label: 'Date et heure de fin de location', type_options: { required: false }}   
-                    - {property: 'dateRetourPrevu', label: 'Date Retour Prévu', type_options: { required: false }}   
+                    - {property: 'dateDepart', format: 'j/n/Y', label: 'Date de debut de location', type_options: { required: true, placeholder: '' }}   
+                    - {property: 'dateRetour', label: 'Date de fin de location', type_options: { required: false }}   
+                    - {property: 'dateRetourPrevu', label: 'Date de retour prévu', type_options: { required: true,  placeholder: '' }}   
                     - {property: 'assuranceAvFranchise', label: 'Assurance Avec Franchise', type_options: { required: false }}   
+                    - {property: 'avance', label: 'Avance', type_options: { required: false }}   
                     - { type: 'group', css_class: 'col-sm-6', label: 'Facture' }
                     - {property: 'Nombre', label: 'Nombre', type_options: { required: false }}   
                     - {property: 'jours', label: 'Jours', type_options: { required: false }}   
                     - {property: 'mois', label: 'Mois', type_options: { required: false }}   
                     - {property: 'heureSupp', label: 'Heures Supp', type_options: { required: false }}   
                     - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: true }}   
-                    - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: false }}  
+                    - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: true }}  
                     - { type: 'group', css_class: 'col-sm-6', help: 'Total à payer en DH' }
-                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: false }}  					
+                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: true }}	
+            list:
+                title: "Liste des contrats"
+                fields:
+                    - {property: 'dateCreated', label: 'Date de création'}
+                    - {property: 'numContrat', label: 'NumContrat'}
+                    - {property: 'dateDepart', label: 'Date de départ'}
+                    - {property: 'dateRetour', label: 'Date de retour'}
+                    - {property: 'dateRetourPrevu', label: 'Date de retour prévu'}
+                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer'}					
+                    - {property: 'locataire', label: 'Locataire'}
+                    - {property: 'vehicule', label: 'Vehicule'}
         Locataire:
             class: AppBundle\Entity\Locataire
             form:
+                title: "Ajouter un locataire"
                 fields:
                     - { type: 'group', css_class: 'col-sm-6', label: '' }
                     - {property: 'nom'}
                     - {property: 'prenom'}
                     - {property: 'cIN', label: 'CIN'}
-#                    - {property: 'delivrance', label: 'Délivré le', type_options: { required: false }}
                     - {property: 'raisonSociale', type_options: { required: false }}
                     - {property: 'phone', label: 'Tél'}
-                    - { type: 'group', css_class: 'col-sm-6', label: '' }
                     - {property: 'nationalite', label: 'Nationalité', type_options: { required: false }}
                     - {property: 'numPasseport', label: 'Passeport'}
                     - {property: 'profession', label: 'Profession', type_options: { required: false }}
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Informations Permis' }
                     - {property: 'permis', label: 'Permis Numero'}
-                    - {property: 'delivrance', label: 'Delivre le', type_options: { required: false }}
+                    - {property: 'delivrance', label: 'Délivré le', type_options: { required: false }}
                     - {property: 'delivranceVille', label: 'A', type_options:{ required: false }}
                     - { type: 'group', css_class: 'col-sm-6', label: '' }
                     - {property: 'adresseMaroc', label: 'Adresse au Maroc', type_options: { required: false}}
