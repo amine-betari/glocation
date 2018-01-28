@@ -31,6 +31,7 @@ easy_admin:
             class: AppBundle\Entity\User
         Contrat:
             class: AppBundle\Entity\Contrat
+            controller: AppBundle\Controller\AdminController
             form:
                 title: "Créer un contrat"
                 fields:
@@ -59,9 +60,10 @@ easy_admin:
                     - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: true }}   
                     - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: true }}  
                     - { type: 'group', css_class: 'col-sm-6', help: 'Total à payer en DH' }
-                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: true }}	
+                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: true }}
             list:
                 title: "Liste des contrats"
+                actions: ['print']
                 fields:
                     - {property: 'dateCreated', label: 'Date de création'}
                     - {property: 'numContrat', label: 'NumContrat'}

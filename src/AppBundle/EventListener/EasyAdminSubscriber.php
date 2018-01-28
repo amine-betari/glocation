@@ -11,7 +11,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 {
 	CONST NUM_CONTRAT = 'LOC';
 	CONST NUM_FACTURE = 'MA';
-
+	
 	public static function getSubscribedEvents()
     {
         return array(
@@ -47,6 +47,8 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 		
 		$em->persist($facture);
 		$em->flush();
+		
+		// add fonctionnality to print a pdf
 	}
 	
 	public function OnUpdate(GenericEvent $event) 

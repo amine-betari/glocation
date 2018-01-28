@@ -1,0 +1,24 @@
+<html>
+    <head>
+         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/customInvoice.css') }}">
+            <base href="http://{{app.request.host}}">
+            <meta charset="UTF-8" >
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <div class="span2">
+                <!--<img src="{{ asset('bootstrap/img/GTO_logo.png') }}">-->
+				EL BEZAZI LOC
+            </div>
+        {% endblock %}
+ 
+        {% block content %}
+			<p>Contrat de locaton</p>
+			<p>{{ contrat.numContrat }}</p>
+        {% endblock %}
+ 
+    </body>
+</html>
