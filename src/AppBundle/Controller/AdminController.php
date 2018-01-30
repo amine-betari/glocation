@@ -24,10 +24,6 @@ class AdminController  extends BaseAdminController
 	/** @Route("/new", name="easyadmin") */
     public function newAction()
     {
-        // you can override this method to perform additional checks and to
-        // perform more complex logic before redirecting to the other methods
-		//dump($this->get('knp_snappy.pdf'));
-		//exit;
 		return parent::newAction();
     }
 	
@@ -38,14 +34,12 @@ class AdminController  extends BaseAdminController
 		$easyadmin = $this->request->attributes->get('easyadmin');
 		// contrat 
 		$entity = $easyadmin['item'];
-		
-		
-		
+				
 		$html = $this->renderView('AppBundle:Print:contrat.html.twig', array(
             'contrat'  => $entity
         ));
 		
-		//return $html;
+		//return new Response($html);
 		$filename = $entity->getNumContrat();
 		return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),

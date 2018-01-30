@@ -1,8 +1,7 @@
 <html>
     <head>
          {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/customInvoice.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/pdf.css') }}">
             <base href="http://{{app.request.host}}">
             <meta charset="UTF-8" >
         {% endblock %}
@@ -16,8 +15,40 @@
         {% endblock %}
  
         {% block content %}
-			<p>Contrat de locaton</p>
-			<p>{{ contrat.numContrat }}</p>
+			<table width="100%">
+				<thead> <!-- En-tête du tableau -->
+				   <tr>
+					   <th>	<h2>Contrat de locaton : {{ contrat.numContrat }} </h2> </th>
+					   <th>	<h4>Oujda, le {{ contrat.dateCreated|date() }}</h4> </th>
+				   </tr>
+			   </thead>
+			</table>
+			<hr>
+			<div id="content" style="width: 100px;">
+				<div id="content_left" style="width: 100px; float:left; border: 1px solid;">
+					<div>
+						<center>
+							<p>LOCATAIRE</p>
+							<span>Nom et prénom ou Raison Sociale</span>
+						<center>
+						<p>{{ contrat.locataire.nom }}</p>
+						<p>{{ contrat.locataire.prenom }}</p>
+						<p>{{ contrat.locataire.raisonSociale }}</p>
+						
+					</div>
+				</div>
+					
+				<div id="content_right" style="float:right;">
+					<div>
+						<center>
+							<p>VEHICULE</p>
+						<center>
+						<p> Marque: {{ contrat.vehicule.marque }}</p>
+						<p> N de matricule: {{ contrat.vehicule.matricule }}</p>
+						<p> Carburant: {{ contrat.vehicule.carburant }}</p>
+					</div>
+				</div>
+			</div>
         {% endblock %}
  
     </body>
