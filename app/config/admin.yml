@@ -63,7 +63,8 @@ easy_admin:
                     - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: true }}
             list:
                 title: "Liste des contrats"
-                actions: ['print']
+                actions: 
+                    - { name: 'print', label: 'PDF'}
                 fields:
                     - {property: 'dateCreated', label: 'Date de création'}
                     - {property: 'numContrat', label: 'NumContrat'}

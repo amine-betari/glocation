@@ -21,6 +21,7 @@ class AppKernel extends Kernel
 			new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 			new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
 			new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+			new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -222,6 +222,7 @@ class Contrat
 	public function __construct()
 	{
 		$this->dateCreated = new \Datetime();
+		$this->dateDepart = new \Datetime();
 	}
 
     /**
