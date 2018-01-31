@@ -19,6 +19,13 @@
 				 .facture td:nth-child(5){width:25%!important;}
 				 .facture td:nth-child(6){width:25%!important;}
 				 .facture td{padding:5px;font-weight:200;}
+				 .dateKm {border-collapse: collapse;width:100% !important;border-top:1px solid #B8B8B8}
+				 .dateKm td {width:50% !important;}
+				 .dateKm tr:first-child td:first-child{border-right:1px solid #B8B8B8;}
+				 .dateKm tr:nth-child(2) td:first-child{border-right:1px solid #B8B8B8}
+				 .dateKm tr:first-child td{border-bottom:1px solid #B8B8B8}
+				 p.reg{font-size:14px;line-height:15px}
+
 
 			 </style>
         {% endblock %}
@@ -31,9 +38,7 @@
 
 					</td>
 					<td>
-						<div class="span2">
-							<img src="{{ asset('/bundles/app/img/logo-car.png') }}">
-						</div>
+						<img src="{{ absolute_url(asset('bundles/app/img/logo-car.png')) }}"/>
 					</td>
 				</tr>
 			</table>
@@ -129,6 +134,56 @@
 								<p>{{ eq.nom }}</p>
 							{% endfor %}
 						</div>
+						<br/>
+						<table class="dateKm">
+							<tr>
+								<td>
+									<center> Date Départ </center>
+									<p> <center> {{ contrat.dateDepart|date('d-m-Y') }} </center></p>
+
+								</td>
+								<td>
+									<center> Date Retour </center>
+									<p><center> {{ contrat.dateRetour|date('d-m-Y') }} </center></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<center> Km Départ </center>
+									<p> <center> {{ contrat.departKm }} </center></p>
+
+								</td>
+								<td>
+									<center> Km Retour </center>
+									<p> <center>{{ contrat.retourKm }} </center></p>
+								</td>
+
+							</tr>
+						</table>
+						<br/>
+						<hr>
+						<center>
+							<p class="title">Date de Retour prévu</p>
+						</center>
+						<p><center> {{ contrat.dateRetourPrevu|date('d-m-Y') }} </center></p>
+						<hr>
+						<br/>
+							<p>Assurance avec Franchise: {{ contrat.assuranceAvFranchise }} </p>
+						<hr>
+						<center> Locataire </center>
+						<p class="reg padding-left">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							J'ai compris et j'accepte les termes et conditions imprimées sur les deux faces
+							de ce contrat de location. je suis responsable des violations de la loi de circulations
+							routières et leurs conséquences éventielles .
+						</p>
+						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lu et Approuvé le: </p>
+						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature: </p>
+
+
+
+
+
 
 					</td>
 				</tr>
