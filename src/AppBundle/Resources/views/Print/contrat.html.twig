@@ -5,26 +5,29 @@
             <base href="http://{{app.request.host}}">
             <meta charset="UTF-8" >
 			 <style>
+				 p,td{font-size:14px}
 				 table.header,table.accroche{border:none}
 				 table.body{width:100%;border-top: 1px #000 solid; border-bottom: none;border-right:none;border-left:none}
 				 table.body td:first-child{border-right: 1px #000 solid;}table.body td{width: 50%}
 				 .padding-left{padding-left:15px}
 				  p,span {font-size:12px;line-height: 8px}p.title{font-size:16px;line-height: 10px}
 				 .margin-left{margin-left: 90px}
-				 table.facture{border-collapse: collapse;}table.facture,.facture td{ border: 1px solid black;font-size:10px}
+				 table.facture{border-collapse: collapse;width:95% !important}table.facture,.facture td{ border: 1px solid black;font-size:10px}
 				 .facture td:first-child{width:10%!important;}
 				 .facture td:nth-child(2){width:10%!important;}
 				 .facture td:nth-child(3){width:10%!important;}
 				 .facture td:nth-child(4){width:20%!important;}
 				 .facture td:nth-child(5){width:25%!important;}
-				 .facture td:nth-child(6){width:25%!important;}
+				 .facture td:nth-child(6){width:20%!important;}
 				 .facture td{padding:5px;font-weight:200;}
 				 .dateKm {border-collapse: collapse;width:100% !important;border-top:1px solid #B8B8B8}
 				 .dateKm td {width:50% !important;}
 				 .dateKm tr:first-child td:first-child{border-right:1px solid #B8B8B8;}
 				 .dateKm tr:nth-child(2) td:first-child{border-right:1px solid #B8B8B8}
 				 .dateKm tr:first-child td{border-bottom:1px solid #B8B8B8}
-				 p.reg{font-size:14px;line-height:15px}
+				 p.reg{font-size:14px;line-height:25px}
+				 .padding-top{padding-top:10px}
+
 
 
 			 </style>
@@ -35,7 +38,9 @@
 			<table class="header">
 				<tr>
 					<td>
-
+						<figure>
+							<img src="{{ absolute_url(asset('bundles/app/img/header.png')) }}"/>
+						</figure>
 					</td>
 					<td>
 						<figure>
@@ -61,7 +66,7 @@
 				<tr>
 					<td>
 						<center>
-							<p class="title">LOCATAIRE</p>
+							<p class="title padding-top">LOCATAIRE</p>
 							<span>Nom et prénom ou Raison Sociale</span>
 						</center>
 						<p>{{ contrat.locataire.nom }}</p>
@@ -101,9 +106,14 @@
 									<td>Prix unit</td>
 									<td>Total T.T.C</td>
 								</tr>
-								<tr> <td></td><td></td><td></td><td></td><td></td><td></td></tr>
-								<tr> <td></td><td></td><td></td><td></td><td></td><td></td></tr>
-
+								<tr>
+									<td>{{ contrat.Nombre }}</td>
+									<td>{{ contrat.jours }}</td>
+									<td>{{ contrat.mois }}</td>
+									<td>{{ contrat.heureSupp }}</td>
+									<td>{{ contrat.prixUnit }}</td>
+									<td>{{ contrat.totalTcc }}</td>
+								</tr>
 						</table>
 						<br/>
 
@@ -163,15 +173,19 @@
 
 							</tr>
 						</table>
-						<br/>
 						<hr>
 						<center>
 							<p class="title">Date de Retour prévu</p>
 						</center>
 						<p><center> {{ contrat.dateRetourPrevu|date('d-m-Y') }} </center></p>
 						<hr>
-						<br/>
-							<p>Assurance avec Franchise: {{ contrat.assuranceAvFranchise }} </p>
+							<p class="padding-left">Assurance avec Franchise:
+								{% if contrat.assuranceAvFranchise  %}
+									Oui
+									{% else %}
+									Non
+								{% endif %}
+							</p>
 						<hr>
 						<center> Locataire </center>
 						<p class="reg padding-left">
