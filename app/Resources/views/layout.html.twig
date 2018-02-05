@@ -11,6 +11,10 @@
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    {% if app.request.get('_route') == 'fos_user_security_login' %}
+
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/login.css') }}" />
+    {% endif %}
     <!--<link rel="stylesheet" href="{{ asset('bundles/ocplatform/plugins/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.css') }}" />-->
     <!--<link rel="stylesheet" href="{{ asset('bundles/amine/css/main.css') }}" />-->
   {% endblock %}

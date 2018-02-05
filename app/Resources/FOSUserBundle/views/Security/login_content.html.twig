@@ -5,6 +5,7 @@
 {% endif %}
 
 <div class="well">
+	<img class="login-logo" src="{{ (asset('bundles/app/img/logo-car-transparent.png')) }}"/>
 	<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
 	<div>
 		    {% if csrf_token %}
