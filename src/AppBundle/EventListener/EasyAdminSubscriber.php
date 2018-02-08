@@ -4,7 +4,10 @@ namespace AppBundle\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use AppBundle\Entity\Contrat;
+use AppBundle\Entity\Locataire;
 use AppBundle\Entity\Facture;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
@@ -16,11 +19,10 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     {
         return array(
             'easy_admin.post_persist' => array('OnCreate'),
-            'easy_admin.post_update' => array('OnUpdate'),
+            'easy_admin.post_update'  => array('OnUpdate'),
         );
     }
 
-	
 	public function OnCreate(GenericEvent $event) 
 	{
 		$entity = $event->getSubject();
