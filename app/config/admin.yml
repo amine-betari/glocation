@@ -44,6 +44,7 @@ easy_admin:
                     - {property: 'prenomSecond', label: 'Prénom', type_options: { required: false }} 
                     - {property: 'cinSecond', label: 'CIN', type_options: { required: false }}  
                     - {property: 'permisSecond', label: 'Permis Numero', type_options: { required: false }}   
+                    - {property: 'delivrance', type: 'AppBundle\AdminForm\Field\DelivranceDateType', label: 'Délivré le', type_options: { placeholder: '', required: false }}
                     - { type: 'group', css_class: 'col-sm-6', label: 'La Location' }
                     - {property: 'departKm', label: 'Kilometrage  Depart', type_options: { required: false }}   
                     - {property: 'retourKm', label: 'Kilometrage  Retour', type_options: { required: false }}   

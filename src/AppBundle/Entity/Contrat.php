@@ -218,6 +218,13 @@ class Contrat
      */
     private $totalTccApayer;
 	
+	/**
+     * @var \Date
+     *
+     * @ORM\Column(name="Delivrance", type="date")
+     */
+    private $delivrance;
+	
 	
 	public function __construct()
 	{
@@ -949,5 +956,29 @@ class Contrat
 					->atPath('dateDepart')
 					->addViolation();
 		}
+    }
+
+    /**
+     * Set delivrance
+     *
+     * @param \DateTime $delivrance
+     *
+     * @return Contrat
+     */
+    public function setDelivrance($delivrance)
+    {
+        $this->delivrance = $delivrance;
+
+        return $this;
+    }
+
+    /**
+     * Get delivrance
+     *
+     * @return \DateTime
+     */
+    public function getDelivrance()
+    {
+        return $this->delivrance;
     }
 }

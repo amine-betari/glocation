@@ -5,14 +5,15 @@
             <base href="http://{{app.request.host}}">
             <meta charset="UTF-8" >
 			 <style>
-				 p,td{font-size:14px}
+				 p,td{font-size:16px; font-weight: bold;}
+				 span{font-weight: bold;}
 				 table.header,table.accroche{border:none}
 				 table.body{width:100%;border-top: 1px #000 solid; border-bottom: none;border-right:none;border-left:none}
 				 table.body td:first-child{border-right: 1px #000 solid;}table.body td{width: 50%}
 				 .padding-left{padding-left:15px}
-				  p,span {font-size:12px;line-height: 8px}p.title{font-size:16px;line-height: 10px}
+				  p,span {font-size:14px;line-height: 8px}p.title{font-size:16px;line-height: 10px}
 				 .margin-left{margin-left: 90px}
-				 table.facture{border-collapse: collapse;width:95% !important}table.facture,.facture td{ border: 1px solid black;font-size:10px}
+				 table.facture{border-collapse: collapse;width:95% !important}table.facture,.facture td{ border: 1px solid black;font-size:14px}
 				 .facture td:first-child{width:10%!important;}
 				 .facture td:nth-child(2){width:10%!important;}
 				 .facture td:nth-child(3){width:10%!important;}
@@ -24,12 +25,12 @@
 				 .dateKm td {width:50% !important;}
 				 .dateKm tr:first-child td:first-child{border-right:1px solid #B8B8B8;}
 				 .dateKm tr:nth-child(2) td:first-child{border-right:1px solid #B8B8B8}
+				 .dateKm tr:nth-child(3) td:first-child{border-right:1px solid #B8B8B8}
 				 .dateKm tr:first-child td{border-bottom:1px solid #B8B8B8}
-				 p.reg{font-size:14px;line-height:25px}
+				 p.reg{font-size:16px;line-height:25px}
+				 p.sig{font-size:16px; line-height: 0px;}
 				 .padding-top{padding-top:10px}
-
-
-
+				 .adresse {line-height:15px}
 			 </style>
         {% endblock %}
     </head>
@@ -44,7 +45,7 @@
 					</td>
 					<td>
 						<figure>
-						<img src="{{ absolute_url(asset('bundles/app/img/logo-car.png')) }}"/>
+							<img src="{{ absolute_url(asset('bundles/app/img/logo-car.png')) }}"/>
 						</figure>
 
 					</td>
@@ -58,7 +59,7 @@
 				<thead> <!-- En-tête du tableau -->
 				   <tr>
 					   <th>	<h3>Contrat de location : {{ contrat.numContrat }} </h3> </th>
-					   <th>	<h4>Oujda, le {{ contrat.dateCreated|date() }}</h4> </th>
+					   <th>	<h4>Oujda, le {{ contrat.dateCreated|date('d/m/Y') }}</h4> </th>
 				   </tr>
 			   </thead>
 			</table>
@@ -66,16 +67,16 @@
 				<tr>
 					<td>
 						<center>
-							<p class="title padding-top">LOCATAIRE</p>
+							<p class="title padding-top"><strong>LOCATAIRE</strong></p>
 							<span>Nom et prénom ou Raison Sociale</span>
 						</center>
 						<p>{{ contrat.locataire.nom }}</p>
 						<p>{{ contrat.locataire.prenom }}</p>
 						<p>{{ contrat.locataire.raisonSociale }}</p>
 						<hr>
-						<p>Adresse au Maroc: {{ contrat.locataire.adresseMaroc }}</p>
+						<p class="adresse">Adresse au Maroc: {{ contrat.locataire.adresseMaroc }}</p>
 						<hr>
-						<p>Adresse à l'étranger: {{ contrat.locataire.adresseEtranger }}</p>
+						<p class="adresse">Adresse à l'étranger: {{ contrat.locataire.adresseEtranger }}</p>
 						<hr>
 						<p>Nationalité: {{ contrat.locataire.nationalite }}</p>
 						<hr>
@@ -86,17 +87,19 @@
 								<span class="margin-left">Délivré le : {{ contrat.locataire.delivrance|date('d-m-Y') }}</span>
 							</p>
 							<p>Passeport N°: {{ contrat.locataire.numPasseport }} </p>
-							<p>Profession: {{ contrat.locataire.profession }} </p>
-							<p>Permis de conduite: {{ contrat.locataire.permis }} </p>
+							<p>Permis de conduire: {{ contrat.locataire.permis }} </p>
 						<hr>
 						<center>
-							<p class="title">Deuxième Chauffeur</p>
+							<p class="title"><strong>Deuxième Chauffeur</strong></p>
 						</center>
 						<p>Nom, prénom: {{ contrat.nomSecond }} </p>
 						<p>CIN: {{ contrat.cinSecond }} </p>
-						<p>Permis de conduite: {{ contrat.permisSecond }} </p>
+						<p>Permis de conduire: {{ contrat.permisSecond }} </p>
+						<p>Délivré le : {{ contrat.delivrance|date('d-m-Y') }} </p>
 						<hr>
-						<p class="title">Facture</p>
+						<center>
+							<p class="title"><strong>Facture</strong></p>
+						</center>
 						<table class="facture">
 								<tr>
 									<td>Nombre</td>
@@ -117,21 +120,18 @@
 						</table>
 						<br/>
 
-						<p> Frais de remise:</p>
-						<p> Lieu:</p>
-						<p> Carburant:</p>
-						<p> Diverses:</p>
-						<p> Kilométrage:</p>
-
-						<br/>
+						<figure>
+							<img src="{{ absolute_url(asset('bundles/app/img/dacia-model.jpg')) }}" width="70%"/>
+						</figure>
+						<br />
 						<p class="margin-left"> Total TTC à payer: {{  contrat.totalTccApayer  }}</p>
-
-
+						<br />
+						<p class="sig"> Signature de l'agent : </p>
 
 					</td>
 					<td>
 						<center>
-							<p class="title">VEHICULE</p>
+							<p class="title padding-top"><strong>VEHICULE</strong></p>
 						</center>
 						<div class="padding-left">
 							<p> Marque: {{ contrat.vehicule.marque }}</p>
@@ -140,7 +140,7 @@
 						</div>
 						<hr>
 						<center>
-							<p class="title">Equipement et Accessoires</p>
+							<p class="title"><strong>Equipement et Accessoires</strong></p>
 						</center>
 						<div class="padding-left">
 							{% for eq in contrat.vehicule.equipements %}
@@ -170,14 +170,18 @@
 									<center> Km Retour </center>
 									<p> <center>{{ contrat.retourKm }} </center></p>
 								</td>
-
+							</tr>
+							<tr>
+								<td>
+									<center>Date de Retour prévu</center>
+									<p> <center> {{ contrat.dateRetourPrevu|date('d-m-Y') }} </center> </p>
+								</td>
+								<td>
+									<center> Nombre de jours </center>
+									<p> <center> {{ nbrJours }} </center> </p>
+								</td>
 							</tr>
 						</table>
-						<hr>
-						<center>
-							<p class="title">Date de Retour prévu</p>
-						</center>
-						<p><center> {{ contrat.dateRetourPrevu|date('d-m-Y') }} </center></p>
 						<hr>
 							<p class="padding-left">Assurance avec Franchise:
 								{% if contrat.assuranceAvFranchise  %}
@@ -187,7 +191,7 @@
 								{% endif %}
 							</p>
 						<hr>
-						<center> Locataire </center>
+						<center><strong> Locataire </strong> </center>
 						<p class="reg padding-left">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							J'ai compris et j'accepte les termes et conditions imprimées sur les deux faces
@@ -195,24 +199,11 @@
 							routières et leurs conséquences éventielles .
 						</p>
 						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lu et Approuvé le: </p>
-						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature: </p>
-
-
-
-
-
-
+						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature du client: </p>
 					</td>
 				</tr>
 
 			</table>
-					
-
-
-
-
-
         {% endblock %}
- 
     </body>
 </html>

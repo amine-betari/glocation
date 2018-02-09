@@ -32,15 +32,19 @@ class AdminController  extends BaseAdminController
 	{
 		$id = $this->request->query->get('id');
 		$easyadmin = $this->request->attributes->get('easyadmin');
-		// contrat 
+
 		$entity = $easyadmin['item'];
-				
+		
+		$interval = date_diff($entity->getDateDepart(), $entity->getDateRetourPrevu());
+		
 		$html = $this->renderView('AppBundle:Print:contrat.html.twig', array(
-            'contrat'  => $entity
+            'contrat'  => $entity,
+			'nbrJours' => $interval->format('%a jours'),
         ));
 		
-		//return new Response($html);
 		$filename = $entity->getNumContrat();
+		
+//		return new Response($html);
 		return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             ''.$filename.'.pdf'
