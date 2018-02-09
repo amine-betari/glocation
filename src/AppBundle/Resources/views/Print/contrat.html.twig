@@ -131,7 +131,7 @@
 					</td>
 					<td>
 						<center>
-							<p class="title padding-top"><strong>VEHICULE</strong></p>
+							<p class="title padding-top" style="margin-top:-180px;"><strong>VEHICULE</strong></p>
 						</center>
 						<div class="padding-left">
 							<p> Marque: {{ contrat.vehicule.marque }}</p>
@@ -144,6 +144,9 @@
 						</center>
 						<div class="padding-left">
 							{% for eq in contrat.vehicule.equipements %}
+								<p>{{ eq.nom }}</p>
+								<p>{{ eq.nom }}</p>
+								<p>{{ eq.nom }}</p>
 								<p>{{ eq.nom }}</p>
 							{% endfor %}
 						</div>
