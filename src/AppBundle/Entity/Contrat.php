@@ -221,7 +221,7 @@ class Contrat
 	/**
      * @var \Date
      *
-     * @ORM\Column(name="Delivrance", type="date")
+     * @ORM\Column(name="Delivrance", type="date", nullable=true)
      */
     private $delivrance;
 	
