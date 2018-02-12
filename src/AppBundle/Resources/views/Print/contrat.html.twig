@@ -95,12 +95,10 @@
 						<hr>
 						<p>Tél: {{ contrat.locataire.phone }}</p>
 						<hr>
-							<p>
-								CIN N°: {{ contrat.locataire.cIN }}
-								<span class="margin-left">Délivré le : {{ contrat.locataire.delivrance|date('d-m-Y') }}</span>
-							</p>
+							<p>CIN N°: {{ contrat.locataire.cIN }}</p>
 							<p>Passeport N°: {{ contrat.locataire.numPasseport }} </p>
 							<p>Permis de conduire: {{ contrat.locataire.permis }} </p>
+							<p>Délivré le : {{ contrat.locataire.delivrance|date('d-m-Y') }}</p>
 						<hr>
 						<center>
 							<p class="title"><strong>Deuxième Chauffeur</strong></p>
