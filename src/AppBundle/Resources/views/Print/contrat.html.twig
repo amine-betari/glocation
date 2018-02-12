@@ -29,7 +29,7 @@
 				 .dateKm tr:first-child td{border-bottom:1px solid #B8B8B8}
 				 p.reg{font-size:16px;line-height:25px}
 				 p.sig{font-size:16px; line-height: 0px;}
-				 .padding-top{padding-top:10px}
+				 .padding-top{padding-top:10px}.padding-bottom{padding-bottom:10px}
 				 .adresse {line-height:15px}
 			 </style>
         {% endblock %}
@@ -67,9 +67,22 @@
 				<tr>
 					<td>
 						<center>
-							<p class="title padding-top"><strong>LOCATAIRE</strong></p>
+							<p class="title padding-top padding-bottom"><strong>LOCATAIRE</strong></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p class="title padding-top padding-bottom"><strong>VEHICULE</strong></p>
+						</center>
+
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
 							<span>Nom et prénom ou Raison Sociale</span>
 						</center>
+
 						<p>{{ contrat.locataire.nom }}</p>
 						<p>{{ contrat.locataire.prenom }}</p>
 						<p>{{ contrat.locataire.raisonSociale }}</p>
@@ -130,9 +143,6 @@
 
 					</td>
 					<td>
-						<center>
-							<p class="title padding-top" style="margin-top:-180px;"><strong>VEHICULE</strong></p>
-						</center>
 						<div class="padding-left">
 							<p> Marque: {{ contrat.vehicule.marque }}</p>
 							<p> N de matricule: {{ contrat.vehicule.matricule }}</p>
