@@ -10,6 +10,7 @@
 				 table.header,table.accroche{border:none}
 				 table.body{width:100%;border-top: 1px #000 solid; border-bottom: none;border-right:none;border-left:none}
 				 table.body td:first-child{border-right: 1px #000 solid;}table.body td{width: 50%}
+				 table.body tr td{ vertical-align: top;}
 				 .padding-left{padding-left:15px}
 				  p,span {font-size:14px;line-height: 8px}p.title{font-size:16px;line-height: 10px}
 				 .margin-left{margin-left: 90px}
@@ -36,7 +37,7 @@
     </head>
     <body>
         {% block header %}
-			<table class="header">
+			<table class="header" style="margin-top:-10px">
 				<tr>
 					<td>
 						<figure>
@@ -51,6 +52,7 @@
 					</td>
 				</tr>
 			</table>
+			<br/>
 
         {% endblock %}
  
@@ -208,6 +210,7 @@
 						</p>
 						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lu et Approuvé le: </p>
 						<p class="reg padding-left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature du client: </p>
+
 					</td>
 				</tr>
 

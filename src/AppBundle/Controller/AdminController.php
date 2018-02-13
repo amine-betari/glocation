@@ -43,7 +43,7 @@ class AdminController  extends BaseAdminController
         ));
 		
 		$filename = $entity->getNumContrat();
-		
+
 		return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             ''.$filename.'.pdf'
