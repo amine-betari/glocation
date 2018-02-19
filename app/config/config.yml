@@ -47,8 +47,10 @@ doctrine:
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'
-        user: '%database_user%'
-        password: '%database_password%'
+#        user: '%database_user%'
+        user: '%env(DATABASE_USER)%'
+#        password: '%database_password%'
+        password: "%env(DATABASE_PASSWORD_GLOCATION)%"
         charset: UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -82,8 +84,6 @@ fos_user:
     from_email:
         address: "amine.betari@gmail.com"
         sender_name: "BAS Postman"
-
-
 # Config PDF
 knp_snappy:
     pdf:
@@ -92,4 +92,3 @@ knp_snappy:
 #        binary:     %kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
         options:
            margin-top: 2mm
-#    temporary_folder: "%kernel.cache_dir%/snappy"
