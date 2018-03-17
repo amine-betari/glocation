@@ -69,14 +69,14 @@ class Facture
     /**
      * @var string
      *
-     * @ORM\Column(name="prixUnit", type="string", length=255)
+     * @ORM\Column(name="prixUnit", type="string", length=255, nullable=true)
      */
     private $prixUnit;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="totalTcc", type="string", length=255)
+     * @ORM\Column(name="totalTcc", type="string", length=255, nullable=true)
      */
     private $totalTcc;
 
@@ -97,7 +97,7 @@ class Facture
     /**
      * @var string
      *
-     * @ORM\Column(name="totalTccApayer", type="string", length=255)
+     * @ORM\Column(name="totalTccApayer", type="string", length=255, nullable=true)
      */
     private $totalTccApayer;
 
