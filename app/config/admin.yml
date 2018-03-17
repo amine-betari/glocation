@@ -58,10 +58,10 @@ easy_admin:
                     - {property: 'jours', label: 'Jours', type_options: { required: false }}   
                     - {property: 'mois', label: 'Mois', type_options: { required: false }}   
                     - {property: 'heureSupp', label: 'Heures Supp', type_options: { required: false }}   
-                    - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: true }}   
-                    - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: true }}  
+                    - {property: 'prixUnit', label: 'Prix Unit', type_options: { required: false }}   
+                    - {property: 'totalTcc', label: 'Total T.T.C', type_options: { required: false }}  
                     - { type: 'group', css_class: 'col-sm-6', help: 'Total à payer en DH' }
-                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: true }}
+                    - {property: 'totalTccApayer', label: 'Total T.T.C à Payer', type_options: { required: false }}
             list:
                 title: "Liste des contrats"
                 actions: 

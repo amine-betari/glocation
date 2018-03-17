@@ -74,17 +74,17 @@ class Contrat
     private $dateRetourPrevu;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateDepart", type="date")
+     * @ORM\Column(name="dateDepart", type="datetime")
 	 * @Assert\NotBlank()
      */
     private $dateDepart;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateRetour", type="date", nullable=false)
+     * @ORM\Column(name="dateRetour", type="datetime", nullable=false)
      */
     private $dateRetour;
 
@@ -162,16 +162,14 @@ class Contrat
 	/**
      * @var string
      *
-     * @ORM\Column(name="prixUnit", type="string", length=255, nullable=false)
-	 * @Assert\NotBlank()
+     * @ORM\Column(name="prixUnit", type="string", length=255, nullable=true)
      */
     private $prixUnit;
 	
 	/**
      * @var string
      *
-     * @ORM\Column(name="totalTcc", type="string", length=255, nullable=false)
-	 * @Assert\NotBlank()
+     * @ORM\Column(name="totalTcc", type="string", length=255, nullable=true)
      */
     private $totalTcc;
 	
@@ -213,8 +211,7 @@ class Contrat
 	/**
      * @var string
      *
-     * @ORM\Column(name="totalTccApayer", type="string", length=255)
-	 * @Assert\NotBlank()
+     * @ORM\Column(name="totalTccApayer", type="string", length=255, nullable=true)
      */
     private $totalTccApayer;
 	
@@ -317,7 +314,7 @@ class Contrat
     /**
      * Set dateDepart
      *
-     * @param \Date $dateDepart
+     * @param \DateTime $dateDepart
      *
      * @return Contrat
      */
@@ -331,7 +328,7 @@ class Contrat
     /**
      * Get dateDepart
      *
-     * @return \Date
+     * @return \DateTime
      */
     public function getDateDepart()
     {
@@ -341,7 +338,7 @@ class Contrat
     /**
      * Set dateRetour
      *
-     * @param \Date $dateRetour
+     * @param \Datetime $dateRetour
      *
      * @return Contrat
      */
@@ -355,7 +352,7 @@ class Contrat
     /**
      * Get dateRetour
      *
-     * @return \Date
+     * @return \Datetime
      */
     public function getDateRetour()
     {
