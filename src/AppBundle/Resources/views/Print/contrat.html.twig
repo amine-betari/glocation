@@ -111,7 +111,13 @@
 						<p>Nom, prénom: {{ contrat.nomSecond }} </p>
 						<p>CIN: {{ contrat.cinSecond }} </p>
 						<p>Permis de conduire: {{ contrat.permisSecond }} </p>
-						<p>Délivré le : {{ contrat.delivrance|date('d-m-Y') }} </p>
+						
+						<p>Délivré le : 
+							{% if contrat.delivrance is not null %} 
+								{{ contrat.delivrance|date('d-m-Y') }} 
+							{% endif %}
+						</p>
+						
 						<hr>
 						<center>
 							<p class="title"><strong>Facture</strong></p>
@@ -176,12 +182,12 @@
 							<tr>
 								<td>
 									<center> Heure Départ </center>
-									<p> <center> {{ contrat.dateDepart|date('h:m') }} </center></p>
+									<p> <center> {{ heureDepart }} </center></p>
 
 								</td>
 								<td>
 									<center> Heure Retour </center>
-									<p><center> {{ contrat.dateRetour|date('h:m') }} </center></p>
+									<p><center> {{ heureRetour }} </center></p>
 								</td>
 							</tr>
 							<tr>

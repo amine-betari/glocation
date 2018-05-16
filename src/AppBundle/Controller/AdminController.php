@@ -34,12 +34,15 @@ class AdminController  extends BaseAdminController
 		$easyadmin = $this->request->attributes->get('easyadmin');
 
 		$entity = $easyadmin['item'];
-		
-		$interval = date_diff($entity->getDateDepart(), $entity->getDateRetourPrevu());
-		
+		$heureDepart = 	$entity->getDateDepart()->format('H:i');
+		//$interval = date_diff($entity->getDateDepart(), $entity->getDateRetourPrevu());
+		$interval = date_diff($entity->getDateDepart()->setTime(00,00), $entity->getDateRetourPrevu());
+	
 		$html = $this->renderView('AppBundle:Print:contrat.html.twig', array(
             'contrat'  => $entity,
 			'nbrJours' => $interval->format('%a jours'),
+			'heureDepart' => $heureDepart,
+			'heureRetour' => $entity->getDateRetour()->format('H:i')
         ));
 		
 		$filename = $entity->getNumContrat();
